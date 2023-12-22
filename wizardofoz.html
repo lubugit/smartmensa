@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="wizarofoz.js"></script>
+</head>
+<body>
+<h1>WizardOfOz</h1>
+<h3>Scannen</h3>
+<form>
+    <select name="scan_people" onchange="scanPerson(this)">
+        <option value="0" selected>A</option>
+        <option value="1">B</option>
+    </select>
+    <p>
+        <label for="multiple">Multiple People</label>
+        <input id="multiple" type="checkbox" onchange="toggleSplitscreen(this)">
+    </p>
+</form>
+<h3>Sprachaus-/eingabe</h3>
+    <div id="ttsArea">
+        
+    </div>
+<button onclick="timer(3)">timer</button>
+</body>
+</html>
