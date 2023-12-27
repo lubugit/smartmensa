@@ -9,12 +9,32 @@ const ttsAreaParts = [
     ["Timer gestartet", "Es wurden mehrere Personen erkannt, du hast noch 20 Sekunden vor dem Bildschirm."],
     ["Timer abgelaufen", "Dein Timer ist abgelaufen, bitte entferne dich vom Bildschirm."]
 ]
+const PEOPLE_COUNT = 2;
+
+var people = [];
 
 window.timer = timer;
 
 // after loading the website completly
 window.onload = function(){
     generateTTSArea();
+
+    loadPeople();
+}
+
+function loadPeople(){
+    for(var i = 0; i < PEOPLE_COUNT; i++){
+        fetch("./people/" + i + ".json")
+            .then((response) => response.json())
+            .then((json) => {
+                people.push(json);
+                const scanSelect = document.getElementById("scan_people");
+                let option = document.createElement("option");
+                option.text = json.name;
+                option.value = json.id;
+                scanSelect.add(option);
+            });
+    }
 }
 
 /**
@@ -26,7 +46,7 @@ function scanPerson(select){
     const value = select.value;
     const person = select[value].text;
 
-    console.log("You selected " + person + "("+value+")");
+    console.log("You selected " + person + "("+value+")\n" + JSON.stringify(people[value], null, 2));
 }
 window.scanPerson = scanPerson;
 
