@@ -2,7 +2,7 @@
  * Seconds timer.
  * @param {*} sec how many seconds you have
  */
-function timer(sec){
+export function timer(sec){
     console.log("Du hast " + sec + " Sekunden");
 
     var passed = 0;

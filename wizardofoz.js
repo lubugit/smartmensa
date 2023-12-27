@@ -1,3 +1,5 @@
+import { timer } from "./smartmensa.js";
+
 const ttsAreaParts = [
     ["Gerichte im Startscreen", "Heute am Mittwoch gibt es Pizza, Currywurst und Pommes, Bratfisch und Hamburger"],
     ["Möglichkeiten im Startscreen", "Möchtest du dich scannen lassen?"],
@@ -7,6 +9,8 @@ const ttsAreaParts = [
     ["Timer gestartet", "Es wurden mehrere Personen erkannt, du hast noch 20 Sekunden vor dem Bildschirm."],
     ["Timer abgelaufen", "Dein Timer ist abgelaufen, bitte entferne dich vom Bildschirm."]
 ]
+
+window.timer = timer;
 
 // after loading the website completly
 window.onload = function(){
@@ -24,6 +28,7 @@ function scanPerson(select){
 
     console.log("You selected " + person + "("+value+")");
 }
+window.scanPerson = scanPerson;
 
 /**
  * Simulation of recognition of multiple people.
@@ -37,6 +42,7 @@ function toggleSplitscreen(box){
         console.log("Splitscreen off");
     }
 }
+window.toggleSplitscreen = toggleSplitscreen;
 
 /**
  * To read content aloud in the language.
@@ -49,6 +55,7 @@ function readAloud(content, lang){
     msg.lang = "de";
     window.speechSynthesis.speak(msg);
 }
+window.readAloud = readAloud;
 
 /**
  * Filling the text-to-speach area with usable buttons.
@@ -56,7 +63,8 @@ function readAloud(content, lang){
 function generateTTSArea(){
     const ttsArea = document.getElementById("ttsArea");
 
-    for(i = 0; i < ttsAreaParts.length;i++){
+    for(var i = 0; i < ttsAreaParts.length;i++){
         ttsArea.innerHTML += "<button onclick=\"readAloud('"+ ttsAreaParts[i][1]+ "')\">"+ ttsAreaParts[i][0]+ "</button>";
     }
 }
+window.generateTTSArea = generateTTSArea;
