@@ -39,7 +39,7 @@ request.onreadystatechange = function() {
 					"picture": "pizza.jpg"
 				});
 			}
-			if (request.responseURL == (dpip + "weeklyplan/")){
+			if (request.responseURL == (dbip + "weeklyplan/")){
 				weeklyplandbcreated = true;
 				//dbput(databasename in our database + /, weekdayid, {list of foodids which will be served on the day});
 				dbput("weeklyplan/","monday",{"menuidlist": ["pizza","burger","currywurst","fish"]});
@@ -110,4 +110,6 @@ function devtest(){
 	console.log("ICH WURDE GEWÄHLT!");
 }
 
+window.createDatabases = createDatabases;
+window.request = request;
 //document.getElementById("createdbbutton").addEventListener("click",createDatabases);
