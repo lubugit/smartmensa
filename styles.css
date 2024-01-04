@@ -1,0 +1,104 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: rgba(222, 219, 219, 0.644);
+    color: rgb(14, 77, 140);
+    display: flex;
+    font-size: 30px;
+    font-weight: bold;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 35px;
+}
+
+.left-content {
+    margin-right: 0px;
+    font-size: 20px;
+    margin: 10px;
+    padding-left: 40px;
+}
+
+.right-content {
+    font-size: 20px;
+    margin: 10px;
+    padding-right: 40px;
+}
+
+.da-btn, .da-btn:focus, .da-btn:active, .da-btn:active:focus {
+    padding: 20px 25px;
+    background-color: rgb(14, 77, 140);
+    color: white;
+    text-align: center;
+    font-size: 20px;
+}
+.da-btn:hover{
+    background-color: rgb(80, 139, 178);
+    color: white;
+}
+
+.food-container {
+    font-size: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: rgb(237, 240, 242);
+    
+}
+.food-container > div {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    font-size: 20px;
+}
+
+/* Style for the card containers */
+.card {
+    min-width: fit-content;
+    max-width: fit-content;
+    border-radius: 4px;
+    margin: 10px;
+    padding: 0px;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    background-color: #a6aba6; /* Change the background color on hover */
+}
+
+.food-card {
+    min-width: 400px;
+    max-width: 600px;
+}
+.card-description {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; /* Truncate text when it overflows */
+    text-align: left;
+    color: rgb(14, 77, 140);
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.card img {
+    max-width: 100%;
+    margin: 0 auto; /* Center the image if it doesn't fit */
+}
