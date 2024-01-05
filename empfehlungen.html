@@ -5,12 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Empfehlungen</title>
         <link rel="stylesheet" href="styles.css">
+        <script src="smartmensa.js"></script>
     </head>
     <body>
 	<script>
-		function getinfos(){
+		function getinfos(item){
 			//console.log("der test funktioniert!");
-			var value = "pizza"; // TODO: id erst einmal hardcoden, später verbinden mit anderen gerichten
+			var value = item.id; // TODO: id erst einmal hardcoden, später verbinden mit anderen gerichten
 			window.location.href = "infos.html?foodid=" + value;
 		}
 	</script>
@@ -33,30 +34,21 @@
         </header>
         <body>
             <div class="food-container">
-                <div class="card food-card" onclick="getinfos()">
-                    <!--<a href="infos.html">-->
-                        <img src="pizza.jpg" alt="Food 1">
-                        <div class="card-description">Pizza</div>
-                    <!--</a>-->
-                    
+                <div class="card food-card" onclick="getinfos(this)" id="pizza">
+                    <img src="pizza.jpg" alt="Food 1">
+                    <div class="card-description">Pizza</div>
                 </div>
-                <div class="card food-card">
-                    <a href="infos.html">
-                        <img src="hamburger.jpg" alt="Food 2">
-                        <div class="card-description">Hamburger</div>
-                    </a>
+                <div class="card food-card" onclick="getinfos(this)" id="burger">
+                    <img src="hamburger.jpg" alt="Food 2">
+                    <div class="card-description">Hamburger</div>
                 </div>
-				<div class="card food-card">
-					<a href="infos.html">
-						<img src="schnitzel.jpg" alt="Food 3">
-						<div class="card-description">Schnitzel</div>
-					</a>
+				<div class="card food-card" onclick="getinfos(this)" id="schnitzel">
+                    <img src="schnitzel.jpg" alt="Food 3">
+                    <div class="card-description">Schnitzel</div>
 				</div>
-				<div class="card food-card">
-					<a href="infos.html">
-						<img src="salat.jpg" alt="Food 4">
-						<div class="card-description">Salat</div>
-					</a>
+				<div class="card food-card" onclick="getinfos(this)" id="salad">
+                    <img src="salad.jpg" alt="Food 4">
+                    <div class="card-description">Salat</div>
 				</div>
             </div>
 

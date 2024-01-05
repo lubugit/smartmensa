@@ -1,1 +1,6 @@
-MENUIDLIST = [{"id":"pizza","ingredients": ["tomato","salami","mushrooms"],"nutritional_value": "","allergens": ["tomato","mushrooms"],"picture": "pizza.jpg"}];
+MENUIDLIST = [
+    {"id":"pizza","ingredients": ["tomato","salami","mushrooms"],"nutritional_value": "","allergens": ["tomato","mushrooms"],"picture": "pizza.jpg"}, 
+    {"id":"burger","ingredients": ["tomato","beef","mushrooms", "buns"],"nutritional_value": "","allergens": ["tomato","mushrooms", "gluten"],"picture": "hamburger.jpg"},
+    {"id":"schnitzel","ingredients": ["calf", "salt"],"nutritional_value": "","allergens": [ "gluten", "eggs"],"picture": "schnitzel.jpg"},
+    {"id":"salad","ingredients": ["tomato", "lettuce", "onions", "cucumber", "oliven", "spinach"],"nutritional_value": "","allergens": ["vegan"],"picture": "salad.jpg"}
+];
