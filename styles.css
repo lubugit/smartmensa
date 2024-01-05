@@ -153,8 +153,8 @@ header {
 .vertical-line {
     border-left: 6px solid rgb(0, 0, 0);
     height: 100%;
-    position: fixed;
-    left: 54%;
+    position: absolute;
+    left: 0%;
     margin-left: -3px;
     top: 0;
   }

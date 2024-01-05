@@ -47,7 +47,8 @@ var profile = {};
 var handlers = {
     "profile": updateProfile,
     "speechOutput": readAloud,
-    "splitscreen": updateSplitscreen
+    "splitscreen": updateSplitscreen,
+    "timer": updateTimer,
 }
 function updateProfile(response){
     profile = response;
@@ -74,23 +75,16 @@ function updateSplitscreen(response){
     }
 }
 
-/**
- * Seconds timer.
- * @param {*} sec how many seconds you have
- */
-function timer(sec){
-    console.log("Du hast " + sec + " Sekunden");
+function updateTimer(response){
+    const timer = document.getElementById("timer");
 
-    var passed = 0;
-    let myTimer = setInterval(function(){
-        passed += 1;
-        let remainder = sec - passed;
-        console.log("Du hast noch " + remainder + " Sekunden");
+    if(response.left <= 0){
+        timer.style.visibility = "hidden";
+    }else{
+        timer.innerHTML = response.left;
 
-        if(remainder == 0){ // to end timer after expiration
-            window.clearInterval(myTimer);
-        }
-    }, 1000);
+        timer.style.visibility = "visible";
+    }
 }
 
 function scan(){

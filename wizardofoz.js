@@ -77,7 +77,8 @@ var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
     "profile": setProfile,
     "splitscreen": setSplitscreen,
-    "speechOutput": setSpeechOutput
+    "speechOutput": setSpeechOutput,
+    "timer": setTimer
 }
 
 function setProfile(response){
@@ -90,6 +91,14 @@ function setSplitscreen(response){
 
 function setSpeechOutput(response){
     put(response, {"text": saveOutput});
+}
+
+function setTimer(response){
+    put(response, {"sec": saveMaxTime, "left": saveRemainer});
+
+    if(saveRemainer == 0){
+        set('splitscreen');
+    }
 }
 
 const ttsAreaParts = [
@@ -110,6 +119,9 @@ var saveProfile = 0
 var saveSplitscreen = false;
 
 var saveOutput = "None";
+
+var saveMaxTime = 0;
+var saveRemainer = 0;
 
 // after loading the website completly
 window.onload = function(){
@@ -155,6 +167,11 @@ function toggleSplitscreen(box){
     saveSplitscreen = box.checked;
     
     set('splitscreen');
+
+    if(saveSplitscreen){
+        timer(20);
+    }
+
 }
 window.toggleSplitscreen = toggleSplitscreen;
 
@@ -185,3 +202,26 @@ function generateTTSArea(){
     }
 }
 window.generateTTSArea = generateTTSArea;
+
+/**
+ * Seconds timer.
+ * @param {*} sec how many seconds you have
+ */
+function timer(sec){
+    console.log("Du hast " + sec + " Sekunden");
+    saveMaxTime = sec;
+    var passed = 0;
+    let myTimer = setInterval(function(){
+        passed += 1;
+        let remainder = sec - passed;
+        saveRemainer = remainder;
+
+        console.log("Du hast noch " + remainder + " Sekunden");
+        if(remainder == 0){ // to end timer after expiration            
+            saveSplitscreen = false;
+        }else if(remainder < 0){
+            window.clearInterval(myTimer);
+        }
+        set('timer');
+    }, 1000);
+}
