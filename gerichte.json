@@ -1,0 +1,1 @@
+MENUIDLIST = [{"id":"pizza","ingredients": ["tomato","salami","mushrooms"],"nutritional_value": "","allergens": ["tomato","mushrooms"],"picture": "pizza.jpg"}];

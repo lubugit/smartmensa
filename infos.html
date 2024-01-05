@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+	<script type="text/javascript" src="gerichte.json"></script>
+	<script>
+		function getfoodid(){
+			/* infos.html?foodid=pizza
+			returns on console.log(pageUrl); "foodid=pizza" (without "")
+			*/
+			var pageUrl = window.location.search.substring(1);
+			//for(let i = 0; i < pageUrl.length;i++){ // for multiple params, implement for loop
+				var paramName = pageUrl.split("="); // foodid = paramName[1]
+				console.log("foodid has value: " + paramName[1]);
+				var foodid = paramName[1];
+				//return paramName[1];
+			//}
+			
+			// Json Test
+			var gerichte = (MENUIDLIST);
+			var aktuelles_gericht = null;
+			for(let i = 0; i < gerichte.length;i++){
+				if(gerichte[i].id == foodid){
+				//if(gerichte[i].id == paramName){
+					aktuelles_gericht = gerichte[i];
+				}
+			}
+			if(aktuelles_gericht){
+				console.log(aktuelles_gericht);
+			} else {
+				alert("Error: foodid was null! Please consult your admin with this error message!");
+			}
+		}
+	</script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Infos</title>
         <link rel="stylesheet" href="styles.css">
     </head>
-    <body>
+    <body onLoad="getfoodid()">
         <header>
             <div class="left-content">
                 <a href="empfehlungen.html">

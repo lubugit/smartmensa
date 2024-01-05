@@ -7,6 +7,13 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
+	<script>
+		function getinfos(){
+			//console.log("der test funktioniert!");
+			var value = "pizza"; // TODO: id erst einmal hardcoden, später verbinden mit anderen gerichten
+			window.location.href = "infos.html?foodid=" + value;
+		}
+	</script>
         <header>
             <div class="left-content">
                 <a href="smartmensa.html">
@@ -26,11 +33,11 @@
         </header>
         <body>
             <div class="food-container">
-                <div class="card food-card">
-                    <a href="infos.html">
+                <div class="card food-card" onclick="getinfos()">
+                    <!--<a href="infos.html">-->
                         <img src="pizza.jpg" alt="Food 1">
                         <div class="card-description">Pizza</div>
-                    </a>
+                    <!--</a>-->
                     
                 </div>
                 <div class="card food-card">
@@ -39,6 +46,18 @@
                         <div class="card-description">Hamburger</div>
                     </a>
                 </div>
+				<div class="card food-card">
+					<a href="infos.html">
+						<img src="schnitzel.jpg" alt="Food 3">
+						<div class="card-description">Schnitzel</div>
+					</a>
+				</div>
+				<div class="card food-card">
+					<a href="infos.html">
+						<img src="salat.jpg" alt="Food 4">
+						<div class="card-description">Salat</div>
+					</a>
+				</div>
             </div>
 
         </body>
