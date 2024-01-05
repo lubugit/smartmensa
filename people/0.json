@@ -4,6 +4,10 @@
     "age": 21,
     "lang": "german",
     "intolerances": [
-        "lacotose"
+        "mushrooms"
+    ],
+    "favourites": [
+        "schnitzel",
+        "burger"
     ]
 }

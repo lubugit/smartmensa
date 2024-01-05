@@ -4,6 +4,10 @@
     "age": 19,
     "lang": "german",
     "intolerances": [
-        "lacotose"
+        "lacotose",
+        "meat"
+    ],
+    "favourites": [
+        "salad"
     ]
 }
