@@ -1,7 +1,100 @@
-import { timer } from "./smartmensa.js";
+// FROM GMCI TEMPLATE
+var loginname = 'admin'
+var loginpass = 'admin'
+
+var request = new XMLHttpRequest();
+
+request.onreadystatechange = function() {
+    console.log("onreadystatechange: " + request.readyState + ", " +  request.status);
+    console.log(request.responseText);
+    if (request.readyState == 4) {
+        if (request.status == 200) {
+            var response = JSON.parse(request.responseText);
+            handlers[response._id](response);
+        }
+        if (request.status == 404) {
+            var json = JSON.parse(request.responseText);
+            if (json.reason === "no_db_file") {
+                createDB();
+            } else {
+                var url = request.responseURL
+//              console.log(typeof(url));
+                var i = url.lastIndexOf("/", url.length - 1);
+                var name = url.substring(i + 1);
+                handlers[name]({ "_id" : name });
+            }
+        }
+    }
+};
+
+function getCheckedRadio(name) {
+    var options = document.getElementsByName(name);
+    for (i = 0; i < options.length; i++) {
+        var option = options[i];
+        if (option.checked) {
+            return option.value;
+        }
+    }
+    return null;
+}
+
+function set(name) {
+    console.log("set::name = " + name);
+    console.log("set::GET = " + dburl + name);
+    request.open("GET", dburl + name, true);
+	request.setRequestHeader("Authorization", "Basic " + btoa(loginname + ":" + loginpass));
+	request.withCredentials = true;
+    request.send();
+}
+
+function put(response, message) {
+    console.log("put::response = " + response);
+    console.log("put::message = " + message);
+    request.open("PUT", dburl + response._id, true);
+    request.setRequestHeader("Content-type", "application/json");
+	request.setRequestHeader("Authorization", "Basic " + btoa(loginname + ":" + loginpass));
+    message["_id"] = response._id;
+    if (response._rev) {
+        message["_rev"] = response._rev;
+    }
+    var s = JSON.stringify(message);
+//  console.log("put: " + s);
+    request.send(s);
+}
+
+function createDB() {
+    request.open("PUT", dburl, true);
+	request.setRequestHeader("Authorization", "Basic " + btoa(loginname + ":" + loginpass));
+    request.send();
+}
+window.createDB = createDB;
+// END GMCI
+
+// MY CODE
+var dbname = "smartmensa";
+var dburl = "http://127.0.0.1:5984/" + dbname + "/";
+
+var handlers = {
+    "profile": setProfile,
+    "splitscreen": setSplitscreen,
+    "speechOutput": setSpeechOutput
+}
+
+function setProfile(response){
+    put(response, people[saveProfile]);
+}
+
+function setSplitscreen(response){
+    put(response, {"enabled": saveSplitscreen});
+}
+
+function setSpeechOutput(response){
+    put(response, {"text": saveOutput});
+}
 
 const ttsAreaParts = [
-    ["Gerichte im Startscreen", "Heute am Mittwoch gibt es Pizza, Currywurst und Pommes, Bratfisch und Hamburger"],
+    // i know how to write but our beatifil tts not ...
+    ["Gerichte im Startscreen", "Heute am Mittwoch gibt es Pizza, Currywurst und Pomäs, Bratfisch und Hamburger"],
     ["Möglichkeiten im Startscreen", "Möchtest du dich scannen lassen?"],
     ["Empfehlungen", "Ich empfehle dir Pizza oder Hamburger"],
     ["Sprache wechseln", "Möchtest du auf Deutsch oder Englisch arbeiten?"],
@@ -13,7 +106,11 @@ const PEOPLE_COUNT =  2;
 
 var people = [];
 
-window.timer = timer;
+var saveProfile = 0
+
+var saveSplitscreen = false;
+
+var saveOutput = "None";
 
 // after loading the website completly
 window.onload = function(){
@@ -44,9 +141,9 @@ function loadPeople(){
  */
 function scanPerson(select){
     const value = select.value;
-    const person = select[value].text;
 
-    console.log("You selected " + person + "("+value+")\n" + JSON.stringify(people[value], null, 2));
+    saveProfile = value;
+    set('profile');
 }
 window.scanPerson = scanPerson;
 
@@ -56,11 +153,9 @@ window.scanPerson = scanPerson;
 function toggleSplitscreen(box){
     console.log("Toggled splitscreen");
 
-    if(box.checked){
-        console.log("Splitscreen on");
-    }else{
-        console.log("Splitscreen off");
-    }
+    saveSplitscreen = box.checked;
+    
+    set('splitscreen');
 }
 window.toggleSplitscreen = toggleSplitscreen;
 
@@ -69,11 +164,14 @@ window.toggleSplitscreen = toggleSplitscreen;
  * @param {*} content Content to read aloud
  * @param {*} language Language to read aloud
  */
-function readAloud(content, lang){
-    var msg = new SpeechSynthesisUtterance();
-    msg.text = content;
-    msg.lang = "de";
-    window.speechSynthesis.speak(msg);
+function readAloud(content){
+    saveOutput = content;
+
+    set("speechOutput");
+    window.setTimeout(function(){
+        saveOutput = "";
+        set("speechOutput");
+    }, 1000);
 }
 window.readAloud = readAloud;
 
