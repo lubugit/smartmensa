@@ -1,6 +1,6 @@
-MENUIDLIST = [
+[
     {"id":"pizza", "translatedName": "Pizza", "ingredients": ["tomato","salami","mushrooms"],"nutritional_value": "","allergens": ["tomato","mushrooms", "meat"],"picture": "pizza.jpg"}, 
     {"id":"burger","translatedName": "Burger", "ingredients": ["tomato","beef", "buns"],"nutritional_value": "","allergens": ["tomato", "gluten", "meat"],"picture": "hamburger.jpg"},
     {"id":"schnitzel", "translatedName":"Schnitzel", "ingredients": ["calf", "salt"],"nutritional_value": "","allergens": [ "gluten", "eggs", "meat"],"picture": "schnitzel.jpg"},
     {"id":"salad","translatedName": "Salat", "ingredients": ["tomato", "lettuce", "onions", "cucumber", "oliven", "spinach"],"nutritional_value": "","allergens": ["vegan"],"picture": "salad.jpg"}
-];
+]
