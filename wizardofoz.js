@@ -93,8 +93,7 @@ function setSpeechOutput(response){
 }
 
 const ttsAreaParts = [
-    // i know how to write but our beatifil tts not ...
-    ["Gerichte im Startscreen", "Heute am Mittwoch gibt es Pizza, Currywurst und Pomäs, Bratfisch und Hamburger"],
+    ["Gerichte im Startscreen", "Heute am Mittwoch gibt es Pizza, Salat, Schnitzel und Hamburger"],
     ["Möglichkeiten im Startscreen", "Möchtest du dich scannen lassen?"],
     ["Empfehlungen", "Ich empfehle dir Pizza oder Hamburger"],
     ["Sprache wechseln", "Möchtest du auf Deutsch oder Englisch arbeiten?"],
