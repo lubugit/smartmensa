@@ -9,7 +9,7 @@ const ttsAreaParts = [
     ["Timer gestartet", "Es wurden mehrere Personen erkannt, du hast noch 20 Sekunden vor dem Bildschirm."],
     ["Timer abgelaufen", "Dein Timer ist abgelaufen, bitte entferne dich vom Bildschirm."]
 ]
-const PEOPLE_COUNT = 2;
+const PEOPLE_COUNT =  2;
 
 var people = [];
 
