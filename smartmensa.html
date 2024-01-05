@@ -9,39 +9,79 @@
 
     </head>
     <body>
-		<div class="left-bar">
-			<div class="bar-spacer-top"></div>
-			<button class="bar-item bar-weekday">Mo.</button>
-			<button class="bar-item bar-weekday">Di.</button>
-			<button class="bar-item bar-weekday">Mi.</button>
-			<button class="bar-item bar-weekday">Do.</button>
-			<button class="bar-item bar-weekday">Fr.</button>
-			<div class="bar-spacer"></div>
-			<a href="empfehlungen.html">
-				<button class="bar-item da-btn scan-btn" onclick="scan()">Scannen</button>
-			</a>
-		</div>
-		
-        <header>
-		<div>
-		</div>
-		<div class="header-content">
-			<div class="title">WOCHENMENU</div>
-		</div>
-		<div class="right-content">
-			<button class="btn da-btn" id="sprache">Deutsch</button>
-		</div>
-		</header>
-		
-		<div class="food-container main-content">
-			<div class="card food-card">
-                <img src="pizza.jpg" alt="Food 1">
-                <div class="card-description">Pizza</div>
-            </div>
-            <div class="card food-card">
-                    <img src="hamburger.jpg" alt="Food 2">
-                    <div class="card-description">Hamburger</div>
-            </div>
+		<div style="display: flex;">
+			<div id="normalscreen" style="width: 100%;">
+				<div class="left-bar">
+					<div class="bar-spacer-top"></div>
+					<button class="bar-item bar-weekday">Mo.</button>
+					<button class="bar-item bar-weekday">Di.</button>
+					<button class="bar-item bar-weekday">Mi.</button>
+					<button class="bar-item bar-weekday">Do.</button>
+					<button class="bar-item bar-weekday">Fr.</button>
+					<div class="bar-spacer"></div>
+					<a href="empfehlungen.html">
+						<button class="bar-item da-btn scan-btn" onclick="scan()">Scannen</button>
+					</a>
+				</div>
+				
+				<header>
+				<div>
+				</div>
+				<div class="header-content">
+					<div class="title">WOCHENMENU</div>
+				</div>
+				<div class="right-content">
+					<button class="btn da-btn" id="sprache">Deutsch</button>
+				</div>
+				</header>
+				
+				<div class="food-container main-content">
+					<div class="card food-card">
+						<img src="pizza.jpg" alt="Food 1">
+						<div class="card-description">Pizza</div>
+					</div>
+					<div class="card food-card">
+							<img src="hamburger.jpg" alt="Food 2">
+							<div class="card-description">Hamburger</div>
+					</div>
+				</div>
+			</div>
+
+			<!--Wird nur genutzt, wenn Splitscreen an ist-->
+			<div id="splitscreen" style="width:50%; margin-left: 54%; position: fixed; display: none;">
+				<div class="vertical-line"></div>
+				<div class="left-bar">
+					<div class="bar-spacer-top"></div>
+					<button class="bar-item bar-weekday">Mo.</button>
+					<button class="bar-item bar-weekday">Di.</button>
+					<button class="bar-item bar-weekday">Mi.</button>
+					<button class="bar-item bar-weekday">Do.</button>
+					<button class="bar-item bar-weekday">Fr.</button>
+					<div class="bar-spacer"></div>
+				</div>
+				
+				<header>
+				<div>
+				</div>
+				<div class="header-content">
+					<div class="title">WOCHENMENU</div>
+				</div>
+				<div class="right-content">
+					<button class="btn da-btn" id="sprache" style="visibility: hidden;">Deutsch</button>
+				</div>
+				</header>
+				
+				<div class="food-container main-content">
+					<div class="card food-card">
+						<img src="pizza.jpg" alt="Food 1">
+						<div class="card-description">Pizza</div>
+					</div>
+					<div class="card food-card">
+							<img src="hamburger.jpg" alt="Food 2">
+							<div class="card-description">Hamburger</div>
+					</div>
+				</div>					
+			</div>
 		</div>
     </body>
 </html>

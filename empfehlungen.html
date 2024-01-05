@@ -7,51 +7,81 @@
         <link rel="stylesheet" href="styles.css">
         <script src="smartmensa.js"></script>
     </head>
-    <body>
 	<script>
+        window.onload = function(){
+            scan();
+            loadFoodContent();
+        }
+
 		function getinfos(item){
 			//console.log("der test funktioniert!");
-			var value = item.id; // TODO: id erst einmal hardcoden, später verbinden mit anderen gerichten
+			var value = item.id;
 			window.location.href = "infos.html?foodid=" + value;
 		}
 	</script>
-        <header>
-            <div class="left-content">
-                <a href="smartmensa.html">
-                    <button class="btn da-btn" id="back-button">Back</button>
-                </a>
-               
-            </div>
-
-            <div class="header-content">
-                <div class="title">EMPFEHLUNGEN</div>
-            </div>
-
-            <div class="right-content">
-                <button class="btn da-btn" id="sprache">Deutsch</button>
+    <body>
+        <div style="display: flex;">
+            <div id="normalscreen" style="width: 100%;">
+                <header>
+                    <div class="left-content">
+                        <a href="smartmensa.html">
+                            <button class="btn da-btn" id="back-button">Back</button>
+                        </a>
+                        
+                    </div>
+        
+                    <div class="header-content">
+                        <div class="title">EMPFEHLUNGEN</div>
+                    </div>
+        
+                    <div class="right-content">
+                        <button class="btn da-btn" id="sprache">Deutsch</button>
+            
+                    </div>
+                </header>
     
-            </div>
-        </header>
-        <body>
-            <div class="food-container">
-                <div class="card food-card" onclick="getinfos(this)" id="pizza">
-                    <img src="pizza.jpg" alt="Food 1">
-                    <div class="card-description">Pizza</div>
+                <div class="food-container" id="foodcontainer">
+    
                 </div>
-                <div class="card food-card" onclick="getinfos(this)" id="burger">
-                    <img src="hamburger.jpg" alt="Food 2">
-                    <div class="card-description">Hamburger</div>
+                <h1 style="font-size: 30pt;">Nicht für dich geeignet: </h3>
+                <div class="food-container" id="falseFood">
                 </div>
-				<div class="card food-card" onclick="getinfos(this)" id="schnitzel">
-                    <img src="schnitzel.jpg" alt="Food 3">
-                    <div class="card-description">Schnitzel</div>
-				</div>
-				<div class="card food-card" onclick="getinfos(this)" id="salad">
-                    <img src="salad.jpg" alt="Food 4">
-                    <div class="card-description">Salat</div>
-				</div>
             </div>
-
-        </body>
+            <!--Wird nur genutzt, wenn Splitscreen an ist-->
+            <div id="splitscreen" style="width:50%; margin-left: 54%; position: fixed; display: none;">
+                <div class="vertical-line"></div>
+                <div class="left-bar">
+                    <div class="bar-spacer-top"></div>
+                    <button class="bar-item bar-weekday">Mo.</button>
+                    <button class="bar-item bar-weekday">Di.</button>
+                    <button class="bar-item bar-weekday">Mi.</button>
+                    <button class="bar-item bar-weekday">Do.</button>
+                    <button class="bar-item bar-weekday">Fr.</button>
+                    <div class="bar-spacer"></div>
+                </div>
+                
+                <header>
+                <div>
+                </div>
+                <div class="header-content">
+                    <div class="title">WOCHENMENU</div>
+                </div>
+                <div class="right-content">
+                    <button class="btn da-btn" id="sprache" style="visibility: hidden;">Deutsch</button>
+                </div>
+                </header>
+                
+                <div class="food-container main-content">
+                    <div class="card food-card">
+                        <img src="pizza.jpg" alt="Food 1">
+                        <div class="card-description">Pizza</div>
+                    </div>
+                    <div class="card food-card">
+                            <img src="hamburger.jpg" alt="Food 2">
+                            <div class="card-description">Hamburger</div>
+                    </div>
+                </div>					
+            </div>
+        </div>
     </body>
 </html>
