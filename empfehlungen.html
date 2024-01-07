@@ -54,11 +54,11 @@
                 <div class="vertical-line"></div>
                 <div class="left-bar">
                     <div class="bar-spacer-top"></div>
-                    <button class="bar-item bar-weekday">Mo.</button>
-                    <button class="bar-item bar-weekday">Di.</button>
-                    <button class="bar-item bar-weekday">Mi.</button>
-                    <button class="bar-item bar-weekday">Do.</button>
-                    <button class="bar-item bar-weekday">Fr.</button>
+                    <button class="bar-item bar-weekday" id="monday">Mo.</button>
+                    <button class="bar-item bar-weekday" id="tuesday">Di.</button>
+                    <button class="bar-item bar-weekday" id="wednesday">Mi.</button>
+                    <button class="bar-item bar-weekday" id="thursday">Do.</button>
+                    <button class="bar-item bar-weekday" id="friday">Fr.</button>
                     <div class="bar-spacer"></div>
                 </div>
                 
@@ -66,7 +66,7 @@
                 <div>
                 </div>
                 <div class="header-content">
-                    <div class="title">WOCHENMENU</div>
+                    <div class="title" id="splitscreentitle">WOCHENMENU</div>
                 </div>
                 <div class="right-content">
                     <button class="btn da-btn" id="sprache" style="visibility: hidden;">Deutsch</button>
@@ -143,6 +143,18 @@
                 else if(language == "english"){
                     current_text_element.innerHTML = foodinenglish[translationindex];
                 }
+            }
+        }
+        // Splitscreen Components
+        const elementids = ["splitscreentitle","monday","tuesday","wednesday","thursday","friday"];
+		const elementtranslationenglish = ["Weekly plan","Mo.","Tu.","Wed.","Th.","Fr."];
+		const elementtranslationgerman = ["Wochenmenü","Mo.","Di.","Mi.","Do.","Fr."];
+        for(let i = 0;i < elementids.length;i++){
+            let current_element = document.getElementById(elementids[i]);
+            if(language == "german"){
+                current_element.innerHTML = elementtranslationgerman[i];
+            } else if(language == "english"){
+                current_element.innerHTML = elementtranslationenglish[i];
             }
         }
     }
