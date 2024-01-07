@@ -13,14 +13,14 @@
 			<div id="normalscreen" style="width: 100%;">
 				<div class="left-bar">
 					<div class="bar-spacer-top"></div>
-					<button class="bar-item bar-weekday">Mo.</button>
-					<button class="bar-item bar-weekday">Di.</button>
-					<button class="bar-item bar-weekday">Mi.</button>
-					<button class="bar-item bar-weekday">Do.</button>
-					<button class="bar-item bar-weekday">Fr.</button>
+					<button class="bar-item bar-weekday" id="monday">Mo.</button>
+					<button class="bar-item bar-weekday" id="tuesday">Di.</button>
+					<button class="bar-item bar-weekday" id="wednesday">Mi.</button>
+					<button class="bar-item bar-weekday" id="thursday">Do.</button>
+					<button class="bar-item bar-weekday" id="friday">Fr.</button>
 					<div class="bar-spacer"></div>
 					<a href="empfehlungen.html">
-						<button class="bar-item da-btn scan-btn" onclick="scan()">Scannen</button>
+						<button class="bar-item da-btn scan-btn" onclick="scan()" id="scanbutton">Scannen</button>
 					</a>
 				</div>
 				<header>
@@ -28,7 +28,7 @@
 					
 				</div>
 				<div class="header-content">
-					<div class="title">WOCHENMENU</div>
+					<div class="title" id="headertitle">WOCHENMENÜ</div>
 				</div>
 				<div class="right-content">
 					<button class="btn da-btn" id="sprache">Deutsch</button>
@@ -52,11 +52,11 @@
 				<div class="vertical-line"></div>
 				<div class="left-bar">
 					<div class="bar-spacer-top"></div>
-					<button class="bar-item bar-weekday">Mo.</button>
-					<button class="bar-item bar-weekday">Di.</button>
-					<button class="bar-item bar-weekday">Mi.</button>
-					<button class="bar-item bar-weekday">Do.</button>
-					<button class="bar-item bar-weekday">Fr.</button>
+					<button class="bar-item bar-weekday" id="monday">Mo.</button>
+					<button class="bar-item bar-weekday" id="tuesday">Di.</button>
+					<button class="bar-item bar-weekday" id="wednesday">Mi.</button>
+					<button class="bar-item bar-weekday" id="thursday">Do.</button>
+					<button class="bar-item bar-weekday" id="friday">Fr.</button>
 					<div class="bar-spacer"></div>
 				</div>
 				
@@ -84,4 +84,36 @@
 			</div>
 		</div>
     </body>
+	<script type="module">
+		// Language translation stuff
+		const current_language = "german";
+		// Same as in empfehlungen.html should be changed in the real application
+		const foodids = ["salad","pizza","burger","schnitzel"];
+		const foodinenglish = ["Salad","Pizza","Burger","Schnitzel"];
+		const foodingerman = ["Salat","Pizza","Burger","Schnitzel"];
+		const foodelementids = ["foodcontainer","falseFood"];
+		// All the above constants are the same as in empfehlungen.html
+
+		const elementids = ["headertitle","monday","tuesday","wednesday","thursday","friday","scanbutton"];
+		const elementtranslationenglish = ["Weekly plan","Mo.","Tu.","Wed.","Th.","Fr.","Scan me"];
+		const elementtranslationgerman = ["Wochenmenü","Mo.","Di.","Mi.","Do.","Fr.","Scanne mich"];
+		
+		if(elementids.length != elementtranslationenglish.length || elementids.length != elementtranslationgerman.length){
+            alert("Show this error message to your administrator: Translation arrays have different length, so there is a translation missing in smartmensa.html!");
+        }
+
+		for(let i = 0; i < elementids.length;i++){
+			let current_element_id = elementids[i];
+			let current_translation = "";
+			if(current_language == "german"){
+				current_translation = elementtranslationgerman[i];
+			} else if(current_language == "english"){
+				current_translation = elementtranslationenglish[i];
+			}
+			console.log(document.getElementById(current_element_id));
+			document.getElementById(current_element_id).innerHTML = current_translation;
+		}
+
+		// No translation for food items because the prototype has only one day which is shown and the food item translation is the same for english and german
+	</script>
 </html>
