@@ -107,7 +107,7 @@ header {
 
 }
 .nutrition-card:hover {
-    background-color: initial; /* Không thay đổi màu nền khi hover */
+    background-color: initial; /* block background color when hovering */
 }
 table {
     width: 550px; 
