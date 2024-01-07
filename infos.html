@@ -10,24 +10,59 @@
 			var pageUrl = window.location.search.substring(1);
 			//for(let i = 0; i < pageUrl.length;i++){ // for multiple params, implement for loop
 				var paramName = pageUrl.split("="); // foodid = paramName[1]
-				console.log("foodid has value: " + paramName[1]);
+				//console.log("foodid has value: " + paramName[1]);
 				var foodid = paramName[1];
 				//return paramName[1];
 			//}
 			
 			// Json Test
 			var gerichte = (MENUIDLIST);
+			var gerichte_index = -1;
 			var aktuelles_gericht = null;
 			for(let i = 0; i < gerichte.length;i++){
 				if(gerichte[i].id == foodid){
 				//if(gerichte[i].id == paramName){
-					aktuelles_gericht = gerichte[i];
+					gerichte_index = i;
+					break;
 				}
 			}
-			if(aktuelles_gericht){
-				console.log(aktuelles_gericht);
+			if(gerichte_index != -1){
+				var aktuelles_gericht = gerichte[gerichte_index];
+				document.getElementById("foodimage").src = aktuelles_gericht.picture; // Set picture to that of the id
+
+				// Translations, yeah!
+				//food translations stolen from empfehlungen.html
+				var language = "german";
+				const foodids = ["salad","pizza","burger","schnitzel"];
+				const foodinenglish = ["Salad","Pizza","Burger","Schnitzel"];
+				const foodingerman = ["Salat","Pizza","Burger","Schnitzel"];
+				let translationindex = foodids.indexOf(aktuelles_gericht.id);
+
+				if(language == "english"){
+					document.getElementById("foodname").innerHTML = foodinenglish[translationindex];
+					document.getElementById("fooddescriptionfoodname").innerHTML = foodinenglish[translationindex];
+				} else if(language == "german"){
+					document.getElementById("foodname").innerHTML = foodingerman[translationindex];
+					document.getElementById("fooddescriptionfoodname").innerHTML = foodingerman[translationindex];
+				}
+
+				const translationids = ["nutrition_title","table_typical_value","table_per100","energytitle","fattitle","carbtitle","proteintitle","salttitle","back-button","fooddescriptiontitle"];
+				const translationingerman = ["Nährwerte","Typische Werte","Pro 100g","Energie","Fett","Kohlenhydrate","Protein","Salz","Zurück","Essensbeschreibung"];
+				const translationinenglish = ["Nutrition","Typical values","Per 100g","Energy","Fat","Carbohydrate","Protein","Salt","Back","Food Description"];
+				for(let i = 0; i < translationids.length;i++){
+					if(language == "english"){
+						document.getElementById(translationids[i]).innerHTML = translationinenglish[i];
+						
+					} else if(language == "german"){
+						document.getElementById(translationids[i]).innerHTML = translationingerman[i];
+					}
+				}
+
 			} else {
-				alert("Error: foodid was null! Please consult your admin with this error message!");
+				//alert("Error: foodid was null! Please consult your admin with this error message!");
+				//TODO: Alternate stuff visible (e.g. empty image and text which informs user about a problem)
+				document.getElementById("foodname").innerHTML = "Error: Couldn't find food in database! Please consult your admin!";
+				document.getElementById("foodimage").src = "";
 			}
 		}
 	</script>
@@ -47,7 +82,7 @@
 
 					<div class="left-content">
 						<a href="empfehlungen.html">
-							<button class="btn da-btn" id="back-button">Back</button>
+							<button class="btn da-btn" id="back-button">Zurück</button>
 						</a>
 						
 					</div>
@@ -64,49 +99,49 @@
 				<body>
 					<div class="food-container main-content">
 						<div class="card food-card">
-							<img src="pizza.jpg" alt="Food 1">
-							<div class="card-description">Pizza</div>
+							<img src="pizza.jpg" alt="Food 1" id="foodimage">
+							<div class="card-description" id="foodname">Pizza</div>
 						</div>
 					</div>
 
 					<div class="food-container main-content">
 						<div class="card nutrition-card">
 							<table border="1">
-								<caption>Nutrition</caption>
+								<caption id="nutrition_title">Nutrition</caption>
 								<thead>
 									<tr>
-										<th>Typical values</th>
-										<th>Per 100g</th>
+										<th id="table_typical_value">Typical values</th>
+										<th id="table_per100">Per 100g</th>
 									</tr>
 								</thead>
 
 								<tbody>
 									<tr>
-										<td>Energy</td>
+										<td id="energytitle">Energy</td>
 										<td>0kJ</td>
 									</tr>
 									<tr>
-										<td>Fat</td>
+										<td id="fattitle">Fat</td>
 										<td>0kJ</td>
 									</tr>
 									<tr>
-										<td>Carbohydrate</td>
+										<td id="carbtitle">Carbohydrate</td>
 										<td>0kJ</td>
 									</tr>
 									<tr>
-										<td>Protein</td>
+										<td id="proteintitle">Protein</td>
 										<td>0kJ</td>
 									</tr>
 									<tr>
-										<td>Salt</td>
+										<td id="salttitle">Salt</td>
 										<td>0kJ</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
 						<div class="card nutrition-card">
-							<h2>Food Description</h2>
-							<h4>Pizza</h4>
+							<h2 id="fooddescriptiontitle">Food Description</h2>
+							<h4 id="fooddescriptionfoodname">Pizza</h4>
 							<p>
 								Pizza Description
 							</p>
