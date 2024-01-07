@@ -22,7 +22,7 @@
         <div style="display: flex;">
             <div id="normalscreen" style="width: 100%;">
                 <header>
-                    <div id="timer" style="color: black;z-index: 4; visibility: hidden;">
+                    <div id="timer" style="color: black;z-index: 4; visibility: hidden; position: absolute;left:10%;">
 					
                     </div>
                     <div class="left-content">
@@ -49,41 +49,49 @@
                 <div class="food-container" id="falseFood">
                 </div>
             </div>
-            <!--Wird nur genutzt, wenn Splitscreen an ist-->
+			<!--Wird nur genutzt, wenn Splitscreen an ist-->
 			<div id="splitscreen" style="width:50%; margin-left: 50%; position: fixed; display: none;">
-                <div class="vertical-line"></div>
-                <div class="left-bar">
-                    <div class="bar-spacer-top"></div>
-                    <button class="bar-item bar-weekday" id="monday">Mo.</button>
-                    <button class="bar-item bar-weekday" id="tuesday">Di.</button>
-                    <button class="bar-item bar-weekday" id="wednesday">Mi.</button>
-                    <button class="bar-item bar-weekday" id="thursday">Do.</button>
-                    <button class="bar-item bar-weekday" id="friday">Fr.</button>
-                    <div class="bar-spacer"></div>
-                </div>
-                
-                <header>
-                <div>
-                </div>
-                <div class="header-content">
-                    <div class="title" id="splitscreentitle">WOCHENMENU</div>
-                </div>
-                <div class="right-content">
-                    <button class="btn da-btn" id="sprache" style="visibility: hidden;">Deutsch</button>
-                </div>
-                </header>
-                
-                <div class="food-container main-content">
-                    <div class="card">
-                        <img src="pizza.jpg" alt="Food 1">
-                        <div class="card-description">Pizza</div>
-                    </div>
-                    <div class="card">
-                            <img src="hamburger.jpg" alt="Food 2">
-                            <div class="card-description">Hamburger</div>
-                    </div>
-                </div>					
-            </div>
+				<div class="vertical-line"></div>
+				<div class="left-bar">
+					<div class="bar-spacer-top"></div>
+					<button class="bar-item bar-weekday today" id="monday">Mo.</button>
+					<button class="bar-item bar-weekday" id="tuesday">Di.</button>
+					<button class="bar-item bar-weekday" id="wednesday">Mi.</button>
+					<button class="bar-item bar-weekday" id="thursday">Do.</button>
+					<button class="bar-item bar-weekday" id="friday">Fr.</button>
+					<div class="bar-spacer"></div>
+				</div>
+				
+				<header>
+				<div>
+				</div>
+				<div class="header-content">
+					<div class="title" id="headertitle">WOCHENMENÜ</div>
+				</div>
+				<div class="right-content">
+					<button class="btn da-btn" id="sprache" style="visibility: hidden;">Deutsch</button>
+				</div>
+				</header>
+				
+				<div class="food-container main-content" style="margin-left: 20%;">
+					<div class="card" style="width:40%;">
+						<img src="pizza.jpg" alt="Food 1">
+						<div class="card-description">Pizza</div>
+					</div>
+					<div class="card" style="width:40%;">
+							<img src="hamburger.jpg" alt="Food 2">
+							<div class="card-description">Hamburger</div>
+					</div>
+					<div class="card" style="width:40%;">
+						<img src="schnitzel.jpg" alt="Food 3">
+						<div class="card-description">Schnitzel</div>
+					</div>
+					<div class="card" style="width:40%;">
+							<img src="salad.jpg" alt="Food 4">
+							<div class="card-description">Salad</div>
+					</div>
+				</div>					
+			</div>
         </div>
     </body>
     <script>
