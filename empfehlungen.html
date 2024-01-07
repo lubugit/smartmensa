@@ -45,7 +45,12 @@
                 <div class="food-container" id="foodcontainer">
     
                 </div>
-                <h1 style="font-size: 30pt;" id="falsefoodtitle">Nicht für dich geeignet: </h3>
+                <div style="display: flex; flex-wrap: wrap;">
+                    <h1 style="font-size: 30pt;" id="falsefoodtitle">
+                        Nicht für dich geeignet: 
+                    </h1>
+                    <h1 style="margin-left: 1%; font-size: 30pt;" id="reason"></h1>
+                </div>
                 <div class="food-container" id="falseFood">
                 </div>
             </div>
@@ -106,14 +111,29 @@
     const foodinenglish = ["Salad","Pizza","Burger","Schnitzel"];
     const foodingerman = ["Salat","Pizza","Burger","Schnitzel"];
     const foodelementids = ["foodcontainer","falseFood"];
+
+    const deIntolerances = {
+        "lactose": "Laktose", 
+        "mushrooms": "Pilze", 
+        "meat": "Fleisch"
+    }
+
+    const enIntolerances = {
+        "Laktose": "lactose", 
+        "Pilze": "mushrooms", 
+        "Fleisch": "meat"
+    }
+
     // Only changes between english and german
     function changelanguage(){
         if(language == "german"){
             language = "english";
             document.getElementById("sprache").innerHTML = "English";
+            changeReasonLanguage(true);
         } else {
             language = "german";
             document.getElementById("sprache").innerHTML = "Deutsch";
+            changeReasonLanguage(false);
         }
         changelanguageelements();
     }
@@ -159,10 +179,34 @@
 		const elementtranslationgerman = ["Wochenmenü","Mo.","Di.","Mi.","Do.","Fr."];
         for(let i = 0;i < elementids.length;i++){
             let current_element = document.getElementById(elementids[i]);
-            if(language == "german"){
-                current_element.innerHTML = elementtranslationgerman[i];
-            } else if(language == "english"){
-                current_element.innerHTML = elementtranslationenglish[i];
+
+            if(current_element != null){
+                if(language == "german"){
+                    current_element.innerHTML = elementtranslationgerman[i];
+                } else if(language == "english"){
+                    current_element.innerHTML = elementtranslationenglish[i];
+                }
+            }
+        }
+    }
+    
+    function changeReasonLanguage(isEN){
+        const reason = document.getElementById("reason");
+
+        var points = reason.innerHTML;
+        reason.innerHTML = "";
+
+        var pointArray = points.split(" ");
+
+        for(var i = 0; i < pointArray.length; i++){
+            if(isEN){
+                if(enIntolerances[pointArray[i]] != undefined){
+                    reason.innerHTML += " " + enIntolerances[pointArray[i]];
+                }
+            }else{
+                if(deIntolerances[pointArray[i]] != undefined){
+                    reason.innerHTML += " " + deIntolerances[pointArray[i]];
+                }
             }
         }
     }

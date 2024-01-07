@@ -110,9 +110,23 @@ function loadFoodContent(){
 
             for(var i = 0; i < sortedJson.length;i++){
                 if(!profile.intolerances.some(val => sortedJson[i].allergens.includes(val))){
-                    foodcontainer.innerHTML += '<div class="card food-card" onclick="getinfos(this)" id="' + sortedJson[i].id +'"><img src="' + sortedJson[i].picture +'" alt="Food ' + i +'"><div class="card-description">'+ sortedJson[i].translatedName + '</div></div>'
+                    foodcontainer.innerHTML += '<div class="card food-card" onclick="getinfos(this)" id="' + sortedJson[i].id +'" style="max-width: 600px;"><img src="' + sortedJson[i].picture +'" alt="Food ' + i +'"><div class="card-description">'+ sortedJson[i].translatedName + '</div></div>'
                 }else{
-                    falseFoodContainer.innerHTML += '<div class="card food-card" onclick="getinfos(this)" id="' + sortedJson[i].id +'"><img src="' + sortedJson[i].picture +'" alt="Food ' + i +'"><div class="card-description">'+ sortedJson[i].translatedName + '</div></div>'
+                    falseFoodContainer.innerHTML += '<div class="card food-card" onclick="getinfos(this)" id="' + sortedJson[i].id +'" style="max-width: 600px;"><img src="' + sortedJson[i].picture +'" alt="Food ' + i +'"><div class="card-description">'+ sortedJson[i].translatedName + '</div></div>'
+                }
+            }
+
+            const deIntolerences = {
+                "lactose": "Laktose", 
+                "mushrooms": "Pilze", 
+                "meat": "Fleisch"
+            }
+
+            const reason = document.getElementById("reason");
+            if(reason != null){
+                reason.innerHTML += deIntolerences[profile.intolerances[0]];
+                for(var i = 1; i < profile.intolerances.length;i++){
+                    reason.innerHTML += " " + deIntolerences[profile.intolerances[i]];
                 }
             }
         });
