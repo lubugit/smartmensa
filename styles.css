@@ -1,4 +1,4 @@
-
+/* Styles Minh Tran */
 * {
     margin: 0;
     padding: 0;
@@ -103,6 +103,31 @@ header {
     margin: 0 auto; /* Center the image if it doesn't fit */
 }
 
+.nutrition-card {
+    background-color: #ccc;
+    display: flex; 
+    width: 550px;
+    height: 550px;
+}
+.nutrition-card:hover {
+    background-color: initial; /* Không thay đổi màu nền khi hover */
+}
+table {
+    width: 550px; 
+    border-collapse: collapse; 
+}
+
+th, td {
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    text-align: left; 
+}
+caption {
+    font-size: 1.5em; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+}
+
 /* Styles Felicia */
 
 .left-header-spacer {
@@ -165,3 +190,4 @@ header {
     margin-left: -3px;
     top: 0;
   }
+
