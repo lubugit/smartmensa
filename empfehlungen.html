@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Empfehlungen</title>
+        <title id="pagetitle">Empfehlungen</title>
         <link rel="stylesheet" href="styles.css">
         <script src="smartmensa.js"></script>
     </head>
@@ -14,7 +14,6 @@
         }
 
 		function getinfos(item){
-			//console.log("der test funktioniert!");
 			var value = item.id;
 			window.location.href = "infos.html?foodid=" + value;
 		}
@@ -28,17 +27,17 @@
                     </div>
                     <div class="left-content">
                         <a href="smartmensa.html">
-                            <button class="btn da-btn" id="back-button">Back</button>
+                            <button class="btn da-btn" id="back-button">Zurück</button>
                         </a>
                         
                     </div>
         
                     <div class="header-content">
-                        <div class="title">EMPFEHLUNGEN</div>
+                        <div class="title" id="headertitle">EMPFEHLUNGEN</div>
                     </div>
         
                     <div class="right-content">
-                        <button class="btn da-btn" id="sprache">Deutsch</button>
+                        <button class="btn da-btn" id="sprache" onclick="changelanguage()">Deutsch</button>
             
                     </div>
                 </header>
@@ -46,7 +45,7 @@
                 <div class="food-container" id="foodcontainer">
     
                 </div>
-                <h1 style="font-size: 30pt;">Nicht für dich geeignet: </h3>
+                <h1 style="font-size: 30pt;" id="falsefoodtitle">Nicht für dich geeignet: </h3>
                 <div class="food-container" id="falseFood">
                 </div>
             </div>
@@ -87,4 +86,65 @@
             </div>
         </div>
     </body>
+    <script>
+    // Language stuff
+
+    var language = "german";
+    const allidstotranslate = ["pagetitle","headertitle","back-button","falsefoodtitle"];
+    const idsinenglish = ["Recommendations","Recommendations","Back","Not recommended for you:"];
+    const idsingerman = ["Empfehlungen","Empfehlungen","Zurück","Nicht für dich geeignet:"];
+
+    const foodids = ["salad","pizza","burger","schnitzel"];
+    const foodinenglish = ["Salad","Pizza","Burger","Schnitzel"];
+    const foodingerman = ["Salat","Pizza","Burger","Schnitzel"];
+    const foodelementids = ["foodcontainer","falseFood"];
+    // Only changes between english and german
+    function changelanguage(){
+        if(language == "german"){
+            language = "english";
+            document.getElementById("sprache").innerHTML = "English";
+        } else {
+            language = "german";
+            document.getElementById("sprache").innerHTML = "Deutsch";
+        }
+        changelanguageelements();
+    }
+
+    function changelanguageelements(){
+        // Check if all the arrays have same length
+        if(allidstotranslate.length != idsinenglish.length || allidstotranslate.length != idsingerman.length){
+            alert("Show this error message to your administrator: Translation arrays have different length, so there is a translation missing in empfehlungen.html!");
+        }
+        // Iterate over all ids which have to be translated
+        for(let i = 0; i < allidstotranslate.length;i++){
+            let current_element = document.getElementById(allidstotranslate[i]);
+            if(current_element == null){
+                alert("Current element is null: " + allidstotranslate[i]);
+            }
+            //console.log(current_element);
+            if(language == "german"){
+                current_element.innerHTML = idsingerman[i];
+            } else if(language == "english") {
+                current_element.innerHTML = idsinenglish[i];
+            }
+        }
+        // Translate food items
+        for(let a = 0; a < foodelementids.length;a++){
+            var foodelement = document.getElementById(foodelementids[a]);
+            var foodelementchildren = foodelement.childNodes;
+            for(let i = 1;i < foodelementchildren.length;i++){ // The first element is something we dont need here (whatever it is)
+                let current_element = foodelementchildren[i];
+                let translationindex = foodids.indexOf(current_element.id);
+                if(translationindex == -1){alert("Show this error message to your administrator: Food translation not found!");}
+                let current_text_element = current_element.childNodes[1]; // Because the food elements have pictures which do not change
+                if(language == "german"){
+                    current_text_element.innerHTML = foodingerman[translationindex];
+                }
+                else if(language == "english"){
+                    current_text_element.innerHTML = foodinenglish[translationindex];
+                }
+            }
+        }
+    }
+    </script>
 </html>
