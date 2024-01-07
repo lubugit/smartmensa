@@ -36,10 +36,13 @@
                         <div class="title" id="headertitle">EMPFEHLUNGEN</div>
                     </div>
         
-                    <div class="right-content">
-                        <button class="btn da-btn" id="sprache" onclick="changelanguage()">Deutsch</button>
-            
-                    </div>
+                    <div class="right-content dropdown">
+						<button class="btn da-btn" id="sprache">Sprache</button>
+						<div class="dropdown-content">
+							<a href="#" onclick="changelanguagetogerman()">Deutsch</a>
+							<a href="#" onclick="changelanguagetoenglish()">English</a>
+						  </div>	
+					</div>
                 </header>
     
                 <div class="food-container" id="foodcontainer">
@@ -73,9 +76,13 @@
 				<div class="header-content">
 					<div class="title" id="headertitle">WOCHENMENÜ</div>
 				</div>
-				<div class="right-content">
-					<button class="btn da-btn" id="sprache" style="visibility: hidden;">Deutsch</button>
-				</div>
+				<div class="right-content dropdown">
+                    <button class="btn da-btn" id="sprache">Sprache</button>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="changelanguagetogerman()">Deutsch</a>
+                        <a href="#" onclick="changelanguagetoenglish()">English</a>
+                      </div>	
+                </div>
 				</header>
 				
 				<div class="food-container main-content" style="margin-left: 20%;">
@@ -125,20 +132,27 @@
     }
 
     // Only changes between english and german
-    function changelanguage(){
-        if(language == "german"){
-            language = "english";
-            document.getElementById("sprache").innerHTML = "English";
-            changeReasonLanguage(true);
-        } else {
-            language = "german";
-            document.getElementById("sprache").innerHTML = "Deutsch";
-            changeReasonLanguage(false);
-        }
+
+    function changelanguagetoenglish(){
+        language = "english";
+        changeReasonLanguage(true);
+        changelanguageelements();
+    }
+
+    function changelanguagetogerman(){
+        language = "german";
+        changeReasonLanguage(false);
         changelanguageelements();
     }
 
     function changelanguageelements(){
+
+        if(language == "english"){
+				document.getElementById("sprache").innerHTML = "Language";
+		} else {
+				document.getElementById("sprache").innerHTML = "Sprache";
+		}
+
         // Check if all the arrays have same length
         if(allidstotranslate.length != idsinenglish.length || allidstotranslate.length != idsingerman.length){
             alert("Show this error message to your administrator: Translation arrays have different length, so there is a translation missing in empfehlungen.html!");

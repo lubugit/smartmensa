@@ -30,8 +30,12 @@
 				<div class="header-content">
 					<div class="title" id="headertitle">WOCHENMENÜ</div>
 				</div>
-				<div class="right-content">
-					<button class="btn da-btn" id="sprache">Deutsch</button>
+				<div class="right-content dropdown">
+					<button class="btn da-btn" id="sprache">Sprache</button>
+					<div class="dropdown-content">
+						<a href="#" onclick="changelanguagetogerman()">Deutsch</a>
+						<a href="#" onclick="changelanguagetoenglish()">English</a>
+					  </div>	
 				</div>
 				</header>
 				
@@ -50,7 +54,7 @@
 					</div>
 					<div class="card food-card" style="min-width: 600px; max-width: 600px;">
 							<img src="salad.jpg" alt="Food 4">
-							<div class="card-description">Salat</div>
+							<div class="card-description" id="saladtitle">Salat</div>
 					</div>
 				</div>
 			</div>
@@ -74,8 +78,12 @@
 				<div class="header-content">
 					<div class="title" id="headertitle">WOCHENMENÜ</div>
 				</div>
-				<div class="right-content">
-					<button class="btn da-btn" id="sprache" style="visibility: hidden;">Deutsch</button>
+				<div class="right-content dropdown">
+						<button class="btn da-btn" id="sprache">Sprache</button>
+						<div class="dropdown-content">
+							<a href="#" onclick="changelanguagetogerman()">Deutsch</a>
+							<a href="#" onclick="changelanguagetoenglish()">English</a>
+						  </div>	
 				</div>
 				</header>
 				
@@ -94,42 +102,63 @@
 					</div>
 					<div class="card" style="width:40%;">
 							<img src="salad.jpg" alt="Food 4">
-							<div class="card-description">Salad</div>
+							<div class="card-description" id="saladtitle">Salad</div>
 					</div>
 				</div>					
 			</div>
 		</div>
     </body>
-	<script type="module">
+	<script>
 		// Language translation stuff
-		const current_language = "german";
-		// Same as in empfehlungen.html should be changed in the real application
-		const foodids = ["salad","pizza","burger","schnitzel"];
-		const foodinenglish = ["Salad","Pizza","Burger","Schnitzel"];
-		const foodingerman = ["Salat","Pizza","Burger","Schnitzel"];
-		const foodelementids = ["foodcontainer","falseFood"];
-		// All the above constants are the same as in empfehlungen.html
+		var current_language = "english";
 
-		const elementids = ["headertitle","monday","tuesday","wednesday","thursday","friday","scanbutton"];
-		const elementtranslationenglish = ["Weekly plan","Mo.","Tu.","Wed.","Th.","Fr.","Scan me"];
-		const elementtranslationgerman = ["Wochenmenü","Mo.","Di.","Mi.","Do.","Fr.","Scanne mich"];
-		
-		if(elementids.length != elementtranslationenglish.length || elementids.length != elementtranslationgerman.length){
-            alert("Show this error message to your administrator: Translation arrays have different length, so there is a translation missing in smartmensa.html!");
-        }
 
-		for(let i = 0; i < elementids.length;i++){
-			let current_element_id = elementids[i];
-			let current_translation = "";
-			if(current_language == "german"){
-				current_translation = elementtranslationgerman[i];
-			} else if(current_language == "english"){
-				current_translation = elementtranslationenglish[i];
-			}
-			console.log(document.getElementById(current_element_id));
-			document.getElementById(current_element_id).innerHTML = current_translation;
+		function changelanguagetogerman(){
+			current_language = "german";
+			settext();
 		}
 
+		function changelanguagetoenglish(){
+			current_language = "english";
+			settext();
+		}
+
+		function settext(){
+			// Same as in empfehlungen.html should be changed in the real application
+			const foodids = ["salad","pizza","burger","schnitzel"];
+			const foodinenglish = ["Salad","Pizza","Burger","Schnitzel"];
+			const foodingerman = ["Salat","Pizza","Burger","Schnitzel"];
+			const foodelementids = ["foodcontainer","falseFood"];
+			// All the above constants are the same as in empfehlungen.html
+			const elementids = ["headertitle","monday","tuesday","wednesday","thursday","friday","scanbutton"];
+			const elementtranslationenglish = ["Weekly plan","Mo.","Tu.","Wed.","Th.","Fr.","Scan me"];
+			const elementtranslationgerman = ["Wochenmenü","Mo.","Di.","Mi.","Do.","Fr.","Scanne mich"];
+			
+			if(current_language == "english"){
+				document.getElementById("sprache").innerHTML = "Language";
+				document.getElementById("saladtitle").innerHTML = "Salad";
+			} else {
+				document.getElementById("sprache").innerHTML = "Sprache";
+				document.getElementById("saladtitle").innerHTML = "Salat";
+			}
+
+			if(elementids.length != elementtranslationenglish.length || elementids.length != elementtranslationgerman.length){
+				alert("Show this error message to your administrator: Translation arrays have different length, so there is a translation missing in smartmensa.html!");
+			}
+
+			for(let i = 0; i < elementids.length;i++){
+				let current_element_id = elementids[i];
+				let current_translation = "";
+				if(current_language == "german"){
+					current_translation = elementtranslationgerman[i];
+				} else if(current_language == "english"){
+					current_translation = elementtranslationenglish[i];
+				}
+				//console.log(document.getElementById(current_element_id));
+				document.getElementById(current_element_id).innerHTML = current_translation;
+			}
+		}
+		settext();
 		// No translation for food items because the prototype has only one day which is shown and the food item translation is the same for english and german
 	</script>
 </html>

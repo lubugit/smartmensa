@@ -3,7 +3,35 @@
     <head>
 	<script type="text/javascript" src="gerichte.json"></script>
 	<script>
+		var language = "german";
+
+		function changelanguage(){
+			if(language == "german"){
+				language = "english";
+			} else {
+				language = "german";
+			}
+			getfoodid();
+		}
+
+		function changelanguagetoenglish(){
+			language = "english"
+			getfoodid();
+		}
+
+		function changelanguagetogerman(){
+			language = "german";
+			getfoodid();
+		}
+
 		function getfoodid(){
+
+			if(language == "english"){
+				document.getElementById("sprache").innerHTML = "Language";
+			} else {
+				document.getElementById("sprache").innerHTML = "Sprache";
+			}
+
 			/* infos.html?foodid=pizza
 			returns on console.log(pageUrl); "foodid=pizza" (without "")
 			*/
@@ -36,10 +64,9 @@
 					document.getElementById(nutrition_ids[nut_index]).innerHTML = gericht_nutrition[nut_index];
 				}
 
-				console.log(gericht_nutrition)
+				//console.log(gericht_nutrition)
 				// Translations, yeah!
 				//food translations stolen from empfehlungen.html
-				var language = "german";
 				const foodids = ["salad","pizza","burger","schnitzel"];
 				const foodinenglish = ["Salad","Pizza","Burger","Schnitzel"];
 				const foodingerman = ["Salat","Pizza","Burger","Schnitzel"];
@@ -130,8 +157,8 @@
 					<div class="right-content dropdown">
 						<button class="btn da-btn" id="sprache">Sprache</button>
 						<div class="dropdown-content">
-							<a href="#">Deutsch</a>
-							<a href="#">English</a>
+							<a href="#" onclick="changelanguagetogerman()">Deutsch</a>
+							<a href="#" onclick="changelanguagetoenglish()">English</a>
 						  </div>	
 					</div>
 				</header>
@@ -208,8 +235,12 @@
 				<div class="header-content">
 					<div class="title" id="headertitle">WOCHENMENÜ</div>
 				</div>
-				<div class="right-content">
-					<button class="btn da-btn" id="sprache" style="visibility: hidden;">Deutsch</button>
+				<div class="right-content dropdown">
+					<button class="btn da-btn" id="sprache">Sprache</button>
+					<div class="dropdown-content">
+						<a href="#" onclick="changelanguagetogerman()">Deutsch</a>
+						<a href="#" onclick="changelanguagetoenglish()">English</a>
+					  </div>	
 				</div>
 				</header>
 				
