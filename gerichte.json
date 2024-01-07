@@ -1,6 +1,6 @@
 MENUIDLIST = [
-    {"id":"pizza", "translatedName": "Pizza", "ingredients": ["tomato","salami","mushrooms"],"nutritional_value": "","allergens": ["tomato","mushrooms", "meat"],"picture": "pizza.jpg"}, 
-    {"id":"burger","translatedName": "Burger", "ingredients": ["tomato","beef", "buns"],"nutritional_value": "","allergens": ["tomato", "gluten", "meat"],"picture": "hamburger.jpg"},
-    {"id":"schnitzel", "translatedName":"Schnitzel", "ingredients": ["calf", "salt"],"nutritional_value": "","allergens": [ "gluten", "eggs", "meat"],"picture": "schnitzel.jpg"},
-    {"id":"salad","translatedName": "Salat", "ingredients": ["tomato", "lettuce", "onions", "cucumber", "oliven", "spinach"],"nutritional_value": "","allergens": ["vegan"],"picture": "salad.jpg"}
+    {"id":"pizza", "translatedName": "Pizza", "ingredients": ["tomato","salami","mushrooms"],"nutritional_value": ["1154 kJ","11,74 g","30,33 g","12,33 g"," 3g"],"allergens": ["tomato","mushrooms", "meat"],"picture": "pizza.jpg"}, 
+    {"id":"burger","translatedName": "Burger", "ingredients": ["tomato","beef", "buns"],"nutritional_value": ["1234 kJ","14 g", "24 g", "17 g", "6g"],"allergens": ["tomato", "gluten", "meat"],"picture": "hamburger.jpg"},
+    {"id":"schnitzel", "translatedName":"Schnitzel", "ingredients": ["calf", "salt"],"nutritional_value": ["1125 kJ", "16 g", "7,5 g", "23 g", "0,76 g"],"allergens": [ "gluten", "eggs", "meat"],"picture": "schnitzel.jpg"},
+    {"id":"salad","translatedName": "Salat", "ingredients": ["tomato", "lettuce", "onions", "cucumber", "oliven", "spinach"],"nutritional_value": ["84 kJ","0,2 g", "4,2 g", "1,2 g", "0 g"],"allergens": ["vegan"],"picture": "salad.jpg"}
 ];
