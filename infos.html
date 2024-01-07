@@ -29,7 +29,14 @@
 			if(gerichte_index != -1){
 				var aktuelles_gericht = gerichte[gerichte_index];
 				document.getElementById("foodimage").src = aktuelles_gericht.picture; // Set picture to that of the id
+				// Nutritional Values
+				var gericht_nutrition = aktuelles_gericht.nutritional_value;
+				const nutrition_ids = ["energyvalue","fatvalue","carbvalue","proteinvalue","saltvalue"];
+				for(let nut_index = 0; nut_index < gericht_nutrition.length;nut_index++){
+					document.getElementById(nutrition_ids[nut_index]).innerHTML = gericht_nutrition[nut_index];
+				}
 
+				console.log(gericht_nutrition)
 				// Translations, yeah!
 				//food translations stolen from empfehlungen.html
 				var language = "german";
@@ -57,6 +64,35 @@
 						document.getElementById(translationids[i]).innerHTML = translationingerman[i];
 					}
 				}
+
+				const ingredientids = ["tomato","salami","mushrooms","beef","buns","calf","salt","lettuce","onions","cucumber","oliven","spinach"];
+				const ingredientsgerman = ["Tomaten","Salami","Pilze","Rindfleisch","Brötchen","Kalbfleisch","Salz","Salat","Zwiebeln","Gurke","Oliven","Spinat"];
+				const ingredientsenglish = ["Tomato","Salami","Mushrooms","Beef","Buns","Calf","Salt","Lettuce","Onions","Cucumber","Oliven","Spinach"];
+
+				var food_description = "";
+				if(language == "english"){
+					food_description = "Food has following ingredients: ";
+				} else if(language == "german"){
+					food_description = "Das Essen besteht aus folgenden Zutaten: ";
+				}
+				var ingredientlist = aktuelles_gericht.ingredients;
+				for(let z = 0; z < ingredientlist.length;z++){
+					if(z == (ingredientlist.length - 1)){
+						if(language == "english"){
+							food_description = food_description + " and ";
+						} else if(language == "german"){
+							food_description = food_description + " und ";
+						}
+					} else if(z > 0){
+						food_description = food_description + " , ";
+					}
+					if(language == "english"){
+						food_description = food_description + ingredientsenglish[ingredientlist.indexOf(ingredientlist[z])];
+					} else if(language == "german"){
+						food_description = food_description + ingredientsgerman[ingredientlist.indexOf(ingredientlist[z])];
+					}
+				}
+				document.getElementById("fooddescription").innerHTML = food_description;
 
 			} else {
 				//alert("Error: foodid was null! Please consult your admin with this error message!");
@@ -118,23 +154,23 @@
 								<tbody>
 									<tr>
 										<td id="energytitle">Energy</td>
-										<td>0kJ</td>
+										<td id="energyvalue">0kJ</td>
 									</tr>
 									<tr>
 										<td id="fattitle">Fat</td>
-										<td>0kJ</td>
+										<td id="fatvalue">0kJ</td>
 									</tr>
 									<tr>
 										<td id="carbtitle">Carbohydrate</td>
-										<td>0kJ</td>
+										<td id="carbvalue">0kJ</td>
 									</tr>
 									<tr>
 										<td id="proteintitle">Protein</td>
-										<td>0kJ</td>
+										<td id="proteinvalue">0kJ</td>
 									</tr>
 									<tr>
 										<td id="salttitle">Salt</td>
-										<td>0kJ</td>
+										<td id="saltvalue">0kJ</td>
 									</tr>
 								</tbody>
 							</table>
@@ -142,7 +178,7 @@
 						<div class="card nutrition-card">
 							<h2 id="fooddescriptiontitle">Food Description</h2>
 							<h4 id="fooddescriptionfoodname">Pizza</h4>
-							<p>
+							<p id="fooddescription">
 								Pizza Description
 							</p>
 							
