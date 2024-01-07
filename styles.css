@@ -68,9 +68,7 @@ header {
 }
 
 /* Style for the card containers */
-.card {
-    min-width: fit-content;
-    max-width: fit-content;
+.card { 
     border-radius: 4px;
     margin: 10px;
     padding: 0px;
@@ -84,10 +82,7 @@ header {
     background-color: #a6aba6; /* Change the background color on hover */
 }
 
-.food-card {
-    min-width: 400px;
-    max-width: 600px;
-}
+
 .card-description {
     overflow: hidden;
     white-space: nowrap;
@@ -104,16 +99,19 @@ header {
 }
 
 .nutrition-card {
+    min-width: fit-content;
+    max-width: fit-content;
     background-color: #ccc;
     display: flex; 
     width: 550px;
-    height: 550px;
+
 }
 .nutrition-card:hover {
     background-color: initial; /* Không thay đổi màu nền khi hover */
 }
 table {
     width: 550px; 
+    height: 100%;
     border-collapse: collapse; 
 }
 
