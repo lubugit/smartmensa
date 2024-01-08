@@ -104,6 +104,8 @@
 				}
 				var ingredientlist = aktuelles_gericht.ingredients;
 				for(let z = 0; z < ingredientlist.length;z++){
+					current_zutat = ingredientlist[z];
+					console.log(current_zutat);
 					if(z == (ingredientlist.length - 1)){
 						if(language == "english"){
 							food_description = food_description + " and ";
@@ -114,9 +116,9 @@
 						food_description = food_description + " , ";
 					}
 					if(language == "english"){
-						food_description = food_description + ingredientsenglish[ingredientlist.indexOf(ingredientlist[z])];
+						food_description = food_description + ingredientsenglish[ingredientids.indexOf(ingredientlist[z])];
 					} else if(language == "german"){
-						food_description = food_description + ingredientsgerman[ingredientlist.indexOf(ingredientlist[z])];
+						food_description = food_description + ingredientsgerman[ingredientids.indexOf(ingredientlist[z])];
 					}
 				}
 				document.getElementById("fooddescription").innerHTML = food_description;
