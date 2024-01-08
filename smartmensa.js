@@ -44,6 +44,8 @@ var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 
 var profile = {};
 
+var wasOne = false;
+
 var handlers = {
     "profile": updateProfile,
     "speechOutput": readAloud,
@@ -78,12 +80,22 @@ function updateSplitscreen(response){
 function updateTimer(response){
     const timer = document.getElementById("timer");
 
-    if(response.left <= 0){
+    if(response.left == -1){
+        window.location.href = "smartmensa.html";
+    }
+
+    if(response.left <= 0 || wasOne){
         timer.style.visibility = "hidden";
+
     }else{
         timer.innerHTML = response.left;
 
         timer.style.visibility = "visible";
+    }
+    if(response.left == 1){
+        wasOne = true;
+    }else{
+        wasOne = false;
     }
 }
 

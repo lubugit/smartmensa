@@ -102,13 +102,14 @@ function setTimer(response){
 }
 
 const ttsAreaParts = [
-    ["Gerichte im Startscreen", "Heute am Mittwoch gibt es Pizza, Salat, Schnitzel und Hamburger"],
+    ["Gerichte im Startscreen", "Heute am Montag gibt es Pizza, Salat, Schnitzel und Hamburger"],
     ["Möglichkeiten im Startscreen", "Möchtest du dich scannen lassen?"],
     ["Empfehlungen", "Ich empfehle dir Pizza oder Hamburger"],
     ["Sprache wechseln", "Möchtest du auf Deutsch oder Englisch arbeiten?"],
     ["Pizza vorlesen", "Ich kann dir mehr zur Pizza erzählen ..."],
     ["Timer gestartet", "Es wurden mehrere Personen erkannt, du hast noch 20 Sekunden vor dem Bildschirm."],
-    ["Timer abgelaufen", "Dein Timer ist abgelaufen, bitte entferne dich vom Bildschirm."]
+    ["Timer abgelaufen", "Dein Timer ist abgelaufen, bitte entferne dich vom Bildschirm."],
+    ["Sprachausgabe deaktiviert", "Die Sprachausgabe wird deaktiviert."]
 ]
 const PEOPLE_COUNT =  2;
 
@@ -121,7 +122,7 @@ var saveSplitscreen = false;
 var saveOutput = "None";
 
 var saveMaxTime = 0;
-var saveRemainer = 0;
+var saveRemainer = -10;
 
 // after loading the website completly
 window.onload = function(){
@@ -170,6 +171,8 @@ function toggleSplitscreen(box){
 
     if(saveSplitscreen){
         timer(20);
+    }else{
+        saveRemainer = -10;
     }
 
 }
@@ -214,13 +217,15 @@ function timer(sec){
     let myTimer = setInterval(function(){
         passed += 1;
         let remainder = sec - passed;
-        saveRemainer = remainder;
-
+        if(saveRemainer >= 0 || saveRemainer == -10){
+            saveRemainer = remainder;
+        }else{
+            window.clearInterval(myTimer);
+            saveRemainer = -10;
+        }
         console.log("Du hast noch " + remainder + " Sekunden");
         if(remainder == 0){ // to end timer after expiration            
             saveSplitscreen = false;
-        }else if(remainder < 0){
-            window.clearInterval(myTimer);
         }
         set('timer');
     }, 1000);
