@@ -1,19 +1,7 @@
 # smartmensa
 
-Unser Projekt
+Unser Projekt.
 
-## JavaScript Funktionen
-Chris [CouchDB]:
-- Von einem Tag Daten laden
-- Empfehlen laden
-- Infos zu Gerichten laden
-- Sprache / Übersetzungen laden
-
-
-Lucas:
-- Sprachausgabe / -eingabe [WoO]
-- Scann mich (JSON File Personen Daten) [WoO]
-- Splitscreen [WoO]
-- Timer
-- Zurück irgendwie / Logout
-- Rausschmiss
+## Voraussetzungen
+- CouchDB muss mit dem Account "admin" "admin" auf dem StandardPort installiert sein
+- Live Server Erweiterung für VSCode
