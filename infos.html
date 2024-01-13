@@ -37,14 +37,34 @@
 			/* infos.html?foodid=pizza
 			returns on console.log(pageUrl); "foodid=pizza" (without "")
 			*/
+			var returntomain = false;
 			var pageUrl = window.location.search.substring(1);
-			//for(let i = 0; i < pageUrl.length;i++){ // for multiple params, implement for loop
-				var paramName = pageUrl.split("="); // foodid = paramName[1]
-				//console.log("foodid has value: " + paramName[1]);
-				var foodid = paramName[1];
+			var foodid = "";
+			var paramlist = pageUrl.split(";");
+			//console.log("paramName:");
+			//console.log(paramlist);
+			for(let i = 0; i < paramlist.length;i++){ // for multiple params, implement for loop
+				 // foodid = paramName[1]
+				var cur_param = paramlist[i].split("=");
+				//console.log("value:");
+				//console.log(cur_param);
+				var value = cur_param[1];
+				var paramname = cur_param[0];
+				//console.log("name:" + "" + "value:" + paramName);
+				if(paramname == "foodid"){
+					var foodid = value;
+				}
+				if(paramname == "returntoweek" && value == "true"){
+					returntomain = true;
+				}	
 				//return paramName[1];
-			//}
-			
+			}
+			// Change back button to return to weeklyplan, if necessary
+			if(returntomain){
+				let buttonref = document.getElementById("back-button-ref");
+				buttonref.href = "smartmensa.html";
+			}
+
 			// Json Test
 			var gerichte = (MENUIDLIST);
 			var gerichte_index = -1;
@@ -148,7 +168,7 @@
 					</div>
 
 					<div class="left-content">
-						<a href="empfehlungen.html">
+						<a href="empfehlungen.html" id="back-button-ref">
 							<button class="btn da-btn" id="back-button">Zurück</button>
 						</a>
 						

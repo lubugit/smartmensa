@@ -6,7 +6,13 @@
         <title>Smartmensa</title>
         <link rel="stylesheet" href="styles.css">
 		<script src="smartmensa.js"></script>
-
+		<script>
+			// Food is clickable
+			function showinfos(item){
+				var value = item.id;
+				window.location.href = "infos.html?foodid=" + value;
+			}
+		</script>
     </head>
     <body>
 		<div style="display: flex;">
@@ -46,19 +52,19 @@
 				</header>
 				
 				<div class="food-container main-content">
-					<div class="card food-card" style="min-width: 600px; max-width: 600px;">
+					<div class="card food-card" style="min-width: 600px; max-width: 600px;" id="pizza" onclick="showinfos(this)">
 						<img src="pizza.jpg" alt="Food 1">
 						<div class="card-description">Pizza</div>
 					</div>
-					<div class="card food-card" style="max-width: 600px;">
+					<div class="card food-card" style="max-width: 600px;" id="hamburger" onclick="showinfos(this)">
 							<img src="hamburger.jpg" alt="Food 2">
 							<div class="card-description">Hamburger</div>
 					</div>
-					<div class="card food-card" style="min-width: 600px; max-width: 600px;">
+					<div class="card food-card" style="min-width: 600px; max-width: 600px;" id="schnitzel" onclick="showinfos(this)">
 						<img src="schnitzel.jpg" alt="Food 3">
 						<div class="card-description">Schnitzel</div>
 					</div>
-					<div class="card food-card" style="min-width: 600px; max-width: 600px;">
+					<div class="card food-card" style="min-width: 600px; max-width: 600px;" id="salad" onclick="showinfos(this)">
 							<img src="salad.jpg" alt="Food 4">
 							<div class="card-description" id="saladtitle">Salat</div>
 					</div>
