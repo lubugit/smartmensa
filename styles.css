@@ -146,14 +146,9 @@ caption {
     text-decoration: none;
     display: block;
 }
-   
-.dropdown-content a:hover {background-color: #a6aba6}
-
-.dropdown:hover .dropdown-content {
-    display: block; /* Show the dropdown menu on hover */
-}
 
 .languageFlag {
+    height: 35px;
     width: 55px; 
     height: auto;
 }

@@ -6,6 +6,10 @@
 		// Language translation stuff
 		var language = "german";
 
+		function toggleDropdown(){
+			document.getElementById("languageDropdown").style.display = "block";
+		}
+
 		function changelanguage(languageCode) {
         	var flagImage = document.getElementById("selectedFlag");
 
@@ -13,6 +17,7 @@
         	    case "german":
         	        flagImage.src = "Deutsch.png";
 					language = "german";
+					flagImage.style.height = "35px";
 					getfoodid();
         	        break;
         	    case "english":
@@ -154,7 +159,7 @@
 					</div>
 		
 					<div class="right-content dropdown">
-						<a href="#" onclick="changelanguage()">
+						<a href="#" onclick="toggleDropdown()">
 							<img id="selectedFlag" class="languageFlag" src="Deutsch.png" alt="Deutsch Flag">
 						</a>
 						<div id="languageDropdown" class="dropdown-content">
