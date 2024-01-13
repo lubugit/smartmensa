@@ -153,6 +153,10 @@ caption {
     display: block; /* Show the dropdown menu on hover */
 }
 
+.languageFlag {
+    width: 55px; 
+    height: auto;
+}
 
 
 /* Styles Felicia */

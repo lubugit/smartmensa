@@ -31,11 +31,17 @@
 					<div class="title" id="headertitle">WOCHENMENÜ</div>
 				</div>
 				<div class="right-content dropdown">
-					<button class="btn da-btn" id="sprache">Sprache</button>
-					<div class="dropdown-content">
-						<a href="#" onclick="changelanguagetogerman()">Deutsch</a>
-						<a href="#" onclick="changelanguagetoenglish()">English</a>
-					  </div>	
+					<a href="#" onclick="changelanguage()">
+						<img id="selectedFlag" class="languageFlag" src="Deutsch.png" alt="Deutsch Flag">
+					</a>
+					<div id="languageDropdown" class="dropdown-content">
+						<a href="#" onclick="changelanguage('german')">
+							<img class="languageFlag" src="Deutsch.png" alt="Deutsch Flag">
+						</a>
+						<a href="#" onclick="changelanguage('english')">
+							<img class="languageFlag" src="USA.png" alt="Englisch Flag">
+						</a>
+					</div>	
 				</div>
 				</header>
 				
@@ -78,13 +84,6 @@
 				<div class="header-content">
 					<div class="title" id="headertitle">WOCHENMENÜ</div>
 				</div>
-				<div class="right-content dropdown">
-						<button class="btn da-btn" id="sprache">Sprache</button>
-						<div class="dropdown-content">
-							<a href="#" onclick="changelanguagetogerman()">Deutsch</a>
-							<a href="#" onclick="changelanguagetoenglish()">English</a>
-						  </div>	
-				</div>
 				</header>
 				
 				<div class="food-container main-content" style="margin-left: 20%;">
@@ -110,18 +109,28 @@
     </body>
 	<script>
 		// Language translation stuff
-		var current_language = "english";
+		var current_language = "german";
 
+		function changelanguage(languageCode) {
+        	var flagImage = document.getElementById("selectedFlag");
+        	var dropdownContent = document.getElementById("languageDropdown");
 
-		function changelanguagetogerman(){
-			current_language = "german";
-			settext();
-		}
-
-		function changelanguagetoenglish(){
-			current_language = "english";
-			settext();
-		}
+        	switch (languageCode) {
+        	    case "german":
+        	        flagImage.src = "Deutsch.png";
+					current_language = "german";
+					settext();
+        	        break;
+        	    case "english":
+        	        flagImage.src = "USA.png";
+					current_language = "english";
+					settext();
+       	         	break;
+            
+       		    default:
+                	break;
+        	}
+    	}
 
 		function settext(){
 			// Same as in empfehlungen.html should be changed in the real application
@@ -135,10 +144,8 @@
 			const elementtranslationgerman = ["Wochenmenü","Mo.","Di.","Mi.","Do.","Fr.","Scanne mich"];
 			
 			if(current_language == "english"){
-				document.getElementById("sprache").innerHTML = "Language";
 				document.getElementById("saladtitle").innerHTML = "Salad";
 			} else {
-				document.getElementById("sprache").innerHTML = "Sprache";
 				document.getElementById("saladtitle").innerHTML = "Salat";
 			}
 
