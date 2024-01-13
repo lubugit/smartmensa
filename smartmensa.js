@@ -89,6 +89,13 @@ function updateTimer(response){
 
     }else{
         timer.innerHTML = "Zeit bis Logout: " + response.left + "s";
+        if(timer.style.color == "black"){
+            if(response.left < 5 || response.left > 15){ // Only blink in first 4 seconds and last 4 seconds
+                timer.style.color = "red";
+            }
+        } else {
+            timer.style.color = "black";
+        }
         //console.log(document.getElementById("selectedFlag"));
         // Language Option in case we are ever gonna implement it...
         /*if(document.getElementById("selectedFlag").src == "USA.png"){
