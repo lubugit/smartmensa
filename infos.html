@@ -3,34 +3,31 @@
     <head>
 	<script type="text/javascript" src="gerichte.json"></script>
 	<script>
+		// Language translation stuff
 		var language = "german";
 
-		function changelanguage(){
-			if(language == "german"){
-				language = "english";
-			} else {
-				language = "german";
-			}
-			getfoodid();
-		}
+		function changelanguage(languageCode) {
+        	var flagImage = document.getElementById("selectedFlag");
 
-		function changelanguagetoenglish(){
-			language = "english"
+        	switch (languageCode) {
+        	    case "german":
+        	        flagImage.src = "Deutsch.png";
+					language = "german";
+					getfoodid();
+        	        break;
+        	    case "english":
+        	        flagImage.src = "USA.png";
+					language = "english";
+					getfoodid();
+       	         	break;
+            
+       		    default:
+                	break;
+        	}
 			getfoodid();
-		}
-
-		function changelanguagetogerman(){
-			language = "german";
-			getfoodid();
-		}
+    	}
 
 		function getfoodid(){
-
-			if(language == "english"){
-				document.getElementById("sprache").innerHTML = "Language";
-			} else {
-				document.getElementById("sprache").innerHTML = "Sprache";
-			}
 
 			/* infos.html?foodid=pizza
 			returns on console.log(pageUrl); "foodid=pizza" (without "")
@@ -157,11 +154,17 @@
 					</div>
 		
 					<div class="right-content dropdown">
-						<button class="btn da-btn" id="sprache">Sprache</button>
-						<div class="dropdown-content">
-							<a href="#" onclick="changelanguagetogerman()">Deutsch</a>
-							<a href="#" onclick="changelanguagetoenglish()">English</a>
-						  </div>	
+						<a href="#" onclick="changelanguage()">
+							<img id="selectedFlag" class="languageFlag" src="Deutsch.png" alt="Deutsch Flag">
+						</a>
+						<div id="languageDropdown" class="dropdown-content">
+							<a href="#" onclick="changelanguage('german')">
+								<img class="languageFlag" src="Deutsch.png" alt="Deutsch Flag">
+							</a>
+							<a href="#" onclick="changelanguage('english')">
+								<img class="languageFlag" src="USA.png" alt="Englisch Flag">
+							</a>
+						</div>	
 					</div>
 				</header>
 				<body>
@@ -237,13 +240,7 @@
 				<div class="header-content">
 					<div class="title" id="headertitle">WOCHENMENÜ</div>
 				</div>
-				<div class="right-content dropdown">
-					<button class="btn da-btn" id="sprache">Sprache</button>
-					<div class="dropdown-content">
-						<a href="#" onclick="changelanguagetogerman()">Deutsch</a>
-						<a href="#" onclick="changelanguagetoenglish()">English</a>
-					  </div>	
-				</div>
+
 				</header>
 				
 				<div class="food-container main-content" style="margin-left: 20%;">

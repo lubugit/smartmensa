@@ -37,12 +37,18 @@
                     </div>
         
                     <div class="right-content dropdown">
-						<button class="btn da-btn" id="sprache">Sprache</button>
-						<div class="dropdown-content">
-							<a href="#" onclick="changelanguagetogerman()">Deutsch</a>
-							<a href="#" onclick="changelanguagetoenglish()">English</a>
-						  </div>	
-					</div>
+                        <a href="#" onclick="changelanguage()">
+                            <img id="selectedFlag" class="languageFlag" src="Deutsch.png" alt="Deutsch Flag">
+                        </a>
+                        <div id="languageDropdown" class="dropdown-content">
+                            <a href="#" onclick="changelanguage('german')">
+                                <img class="languageFlag" src="Deutsch.png" alt="Deutsch Flag">
+                            </a>
+                            <a href="#" onclick="changelanguage('english')">
+                                <img class="languageFlag" src="USA.png" alt="Englisch Flag">
+                            </a>
+                        </div>	
+                    </div>
                 </header>
     
                 <div class="food-container" id="foodcontainer">
@@ -75,16 +81,7 @@
 				</div>
 				<div class="header-content">
 					<div class="title" id="headertitle">WOCHENMENÜ</div>
-				</div>
-				<div class="right-content dropdown">
-                    <button class="btn da-btn" id="sprache">Sprache</button>
-                    <div class="dropdown-content">
-                        <a href="#" onclick="changelanguagetogerman()">Deutsch</a>
-                        <a href="#" onclick="changelanguagetoenglish()">English</a>
-                      </div>	
-                </div>
-				</header>
-				
+				</div>	
 				<div class="food-container main-content" style="margin-left: 20%;">
 					<div class="card" style="width:40%;">
 						<img src="pizza.jpg" alt="Food 1">
@@ -132,26 +129,29 @@
     }
 
     // Only changes between english and german
+    function changelanguage(languageCode) {
+        	var flagImage = document.getElementById("selectedFlag");
 
-    function changelanguagetoenglish(){
-        language = "english";
-        changeReasonLanguage(true);
-        changelanguageelements();
-    }
-
-    function changelanguagetogerman(){
-        language = "german";
-        changeReasonLanguage(false);
-        changelanguageelements();
-    }
+        	switch (languageCode) {
+        	    case "german":
+        	        flagImage.src = "Deutsch.png";
+					language = "german";
+					changeReasonLanguage(false);
+                    changelanguageelements();
+        	        break;
+        	    case "english":
+        	        flagImage.src = "USA.png";
+					language = "english";
+					changeReasonLanguage(true);
+                    changelanguageelements();
+       	         	break;
+            
+       		    default:
+                	break;
+        	}
+    	}
 
     function changelanguageelements(){
-
-        if(language == "english"){
-				document.getElementById("sprache").innerHTML = "Language";
-		} else {
-				document.getElementById("sprache").innerHTML = "Sprache";
-		}
 
         // Check if all the arrays have same length
         if(allidstotranslate.length != idsinenglish.length || allidstotranslate.length != idsingerman.length){
