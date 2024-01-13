@@ -88,8 +88,12 @@ function updateTimer(response){
         timer.style.visibility = "hidden";
 
     }else{
-        timer.innerHTML = response.left;
-
+        timer.innerHTML = "Zeit bis Logout: " + response.left + "s";
+        //console.log(document.getElementById("selectedFlag"));
+        // Language Option in case we are ever gonna implement it...
+        /*if(document.getElementById("selectedFlag").src == "USA.png"){
+            timer.innerHTML = "Time to logout: " + response.left + "s";
+        }*/
         timer.style.visibility = "visible";
     }
     if(response.left == 1){
