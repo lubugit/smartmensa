@@ -70,9 +70,11 @@ function updateSplitscreen(response){
 
     if(response.enabled){
         normalscreen.style.width = "50%";
+        normalscreen.style.border = "0.5rem solid orange";
         splitscreen.style.display = "block";
     }else{
         normalscreen.style.width = "100%";
+        normalscreen.style.border = "";
         splitscreen.style.display = "none";
     }
 }
