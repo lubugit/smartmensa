@@ -153,6 +153,14 @@ caption {
     height: auto;
 }
 
+.food-card{
+    width: 500px;
+}
+
+.food-pic{
+    width: 400px; 
+    height: 400px;
+}
 
 /* Styles Felicia */
 
