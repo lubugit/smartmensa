@@ -10,7 +10,7 @@
 			// Food is clickable
 			function showinfos(item){
 				var value = item.id;
-				window.location.href = "infos.html?foodid=" + value;
+				window.location.href = "infos.html?foodid=" + value + ";" + "returntoweek=true";
 			}
 		</script>
     </head>
@@ -56,7 +56,7 @@
 						<img src="pizza.jpg" alt="Food 1">
 						<div class="card-description">Pizza</div>
 					</div>
-					<div class="card food-card" style="max-width: 600px;" id="hamburger" onclick="showinfos(this)">
+					<div class="card food-card" style="max-width: 600px;" id="burger" onclick="showinfos(this)">
 							<img src="hamburger.jpg" alt="Food 2">
 							<div class="card-description">Hamburger</div>
 					</div>
