@@ -54,6 +54,7 @@ var handlers = {
 }
 function updateProfile(response){
     profile = response;
+    document.getElementById("nameOfUser").innerHTML = profile.name;
 }
 function readAloud(response){
     if(response.text != ""){
@@ -100,7 +101,7 @@ function updateTimer(response){
         }
         //console.log(document.getElementById("selectedFlag"));
         // Language Option in case we are ever gonna implement it...
-        /*if(document.getElementById("selectedFlag").src == "USA.png"){
+        /*if(document.getElementById("selectedFlag").src == "picture/USA.png"){
             timer.innerHTML = "Time to logout: " + response.left + "s";
         }*/
         timer.style.visibility = "visible";
