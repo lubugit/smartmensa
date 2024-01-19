@@ -68,15 +68,22 @@ function readAloud(response){
 function updateSplitscreen(response){
     const splitscreen = document.getElementById("splitscreen");
     const normalscreen = document.getElementById("normalscreen");
+    const name = document.getElementById("nameOfUser");
 
     if(response.enabled){
         normalscreen.style.width = "50%";
         normalscreen.style.border = "0.5rem solid orange";
         splitscreen.style.display = "block";
+
+        name.style = "position: absolute; margin-left: 22.5%; margin-top: 4%; font-size: 20px;";
+        name.innerHTML = profile.name;
     }else{
         normalscreen.style.width = "100%";
         normalscreen.style.border = "";
         splitscreen.style.display = "none";
+
+        name.style = "position: absolute; margin-left: 20%;font-size: 30px;";
+        name.innerHTML = profile.name;
     }
 }
 
