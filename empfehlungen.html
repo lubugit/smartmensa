@@ -31,21 +31,23 @@
                         </a>
                         
                     </div>
-        
+                    <div id="nameOfUser" style="position: absolute; margin-left: 20%;">
+                        name
+                    </div>
                     <div class="header-content">
                         <div class="title" id="headertitle">EMPFEHLUNGEN</div>
                     </div>
         
                     <div class="right-content dropdown">
                         <a href="#" onclick="toggleDropdown()">
-                            <img id="selectedFlag" class="languageFlag" src="Deutsch.png" alt="Deutsch Flag">
+                            <img id="selectedFlag" class="languageFlag" src="picture/Deutsch.png" alt="Deutsch Flag">
                         </a>
                         <div id="languageDropdown" class="dropdown-content">
                             <a href="#" onclick="changelanguage('german')">
-                                <img class="languageFlag" src="Deutsch.png" alt="Deutsch Flag">
+                                <img class="languageFlag" src="picture/Deutsch.png" alt="Deutsch Flag">
                             </a>
                             <a href="#" onclick="changelanguage('english')">
-                                <img class="languageFlag" src="USA.png" alt="Englisch Flag">
+                                <img class="languageFlag" src="picture/USA.png" alt="Englisch Flag">
                             </a>
                         </div>	
                     </div>
@@ -84,19 +86,19 @@
 				</div>	
 				<div class="food-container main-content" style="margin-left: 20%;">
 					<div class="card" style="width:40%;">
-						<img src="pizza.jpg" alt="Food 1">
+						<img src="picture/pizza.jpg" alt="Food 1">
 						<div class="card-description">Pizza</div>
 					</div>
 					<div class="card" style="width:40%;">
-							<img src="hamburger.jpg" alt="Food 2">
+							<img src="picture/hamburger.jpg" alt="Food 2">
 							<div class="card-description">Hamburger</div>
 					</div>
 					<div class="card" style="width:40%;">
-						<img src="schnitzel.jpg" alt="Food 3">
+						<img src="picture/schnitzel.jpg" alt="Food 3">
 						<div class="card-description">Schnitzel</div>
 					</div>
 					<div class="card" style="width:40%;">
-							<img src="salad.jpg" alt="Food 4">
+							<img src="picture/salad.jpg" alt="Food 4">
 							<div class="card-description">Salad</div>
 					</div>
 				</div>					
@@ -138,14 +140,14 @@
 
         	switch (languageCode) {
         	    case "german":
-        	        flagImage.src = "Deutsch.png";
+        	        flagImage.src = "picture/Deutsch.png";
 					language = "german";
                     flagImage.style.height = "35px";
 					changeReasonLanguage(false);
                     changelanguageelements();
         	        break;
         	    case "english":
-        	        flagImage.src = "USA.png";
+        	        flagImage.src = "picture/USA.png";
 					language = "english";
 					changeReasonLanguage(true);
                     changelanguageelements();
